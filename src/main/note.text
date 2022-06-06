@@ -1,0 +1,47 @@
+
+2022/ 06/ 06 컴포넌트 스캔과 자동 의존관계 설정
+
+
+ * @Controller 를 통해서 외부 요청을 받고
+ * @Service 에서 비즈니스 로직을 만들고
+ * @Repository 에서 데이터를 저장을 한다.
+
+스프링 빈을 등록하는 2가지 방법
+1. 컴포넌트 스캔과 자동 의존관계 설정
+2. 자바 코드로 직접 스프링 빈 등록하기
+
+
+@Component 어노테이션이 있으면 스프링 빈으로 자동 등록된다.
+
+@Component를 포함하는 다음 어노테이션도 스프링 빈으로 자동 등록된다.
+    @Controller
+    @Service
+    @Repository
+
+@Controller 컨트롤러가 스프링 빈으로 자동 등록된 이유도 컴포넌트 스캔 때문임.
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Controller {
+
+	/**
+	 * The value may indicate a suggestion for a logical component name,
+	 * to be turned into a Spring bean in case of an autodetected component.
+	 * @return the suggested component name, if any (or empty String otherwise)
+	 */
+	@AliasFor(annotation = Component.class)
+	String value() default "";
+
+}
+
+스프링은 스프링 컨테이너에 스프링 빈을 등록할때, 기본으로 싱글톤으로 등록한다( 유일하게 하나만 등록해서 공유)
+따라서 같은 스프링 빈이면 모두 같은 인스턴스다.
+설정으로 싱글톤이 아니게 설정할 수 있지만.
+특별한 경우를 제외하면 대부분 싱글톤을 사용한다.
+
+
+
+2022/ 06/ 06 자바 코드로 직접 스프링 빈 등록하기
+

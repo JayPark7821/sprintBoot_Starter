@@ -3,6 +3,8 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,10 +12,23 @@ import java.util.Optional;
 /**
  * 서비스는 비즈니스에 가까운 용어를 사용
  * 비즈니스에 의존적으로 설계를 한다.
+ *
+ * @Service는 스프링이 올라올때 스프링컨테이너에 해당
+ * 어노테이션이 붙은 서비스를 등록하고 관리해준다.
  */
+@Service
 public class MemberService {
-// 단축키!! junit 테스트 생성 단축키 ctrl + shift + t
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+
+
+    // 단축키!! junit 테스트 생성 단축키 ctrl + shift + t
+    private final MemberRepository memberRepository;
+
+    // DI dependency injection
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
 
     /**
      * 회원가입
