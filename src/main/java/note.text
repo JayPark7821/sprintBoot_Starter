@@ -87,4 +87,19 @@ public @interface Controller {
 ctrl + e 최근에 열었던 파일 목록
 
 
+2022/ 06/ 06  순수 JDBC
+
+스프링의 DI (Dependencies Injection)을 사용하면 기존 코드를 전혀 손대지 않고, 설정만으로
+구현 클래스를 변경 할 수 있다.
+
+
+2022/ 06/ 06  스프링 JdbcTemplate
+
+순수 Jdbc와 동일한 환경설정을 하면된다.
+스프링 jdbcTemplate과 MyBatis같은 라이브러리는  JDBC API에서 본 반복 코드를 대부분 제거해준다.
+하지만 SQL은 직접 작성해야 한다.
+
+
+
+
 
