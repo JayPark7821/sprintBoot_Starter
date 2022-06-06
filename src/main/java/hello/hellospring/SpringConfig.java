@@ -17,24 +17,35 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class SpringConfig {
-//
+
+
+    //  JDBC
 //    private DataSource dataSource;
 //    @Autowired
 //    public SpringConfig(DataSource dataSource) {
 //        this.dataSource = dataSource;
 //    }
 
-    /**
-     * 원래 스팩에서는 @PersistenceContext를 사용해서 받는다.
-     *  @PersistenceContext
-     *  private EntityManager em;
-     */
+    // JPA
+//    /**
+//     * 원래 스팩에서는 @PersistenceContext를 사용해서 받는다.
+//     *  @PersistenceContext
+//     *  private EntityManager em;
+//     */
+//
+//    private  EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
 
-    private  EntityManager em;
+
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
