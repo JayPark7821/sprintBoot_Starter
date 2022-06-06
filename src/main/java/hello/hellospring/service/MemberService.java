@@ -5,6 +5,7 @@ import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +16,11 @@ import java.util.Optional;
  *
  * @Service는 스프링이 올라올때 스프링컨테이너에 해당
  * 어노테이션이 붙은 서비스를 등록하고 관리해준다.
+ *
+ * JPA를 사용하려면 항상 Transaction이 있어야한다.
+ * JPA는 모든 데이터 변경이 Transaction 안에서 실행되어야한다.
  */
+@Transactional
 public class MemberService {
 
 
