@@ -116,6 +116,40 @@ ctrl + e 최근에 열었던 파일 목록
 개발자는 핵심 비즈니스 로직을 개발하는데 집중 할 수 있다.
 
 
+2022/ 06/ 07 스프링 데이터 JPA
+
+스프링 데이터 JPA가 SpringDataJpaMemberRepository를 스프링 빈으로 자동 등록해준다.
+인터페이스를 통한 기본적인 CRUD 제공
+findByName() , findByEmail() 등 메서드 이름만 으로 조회 기능 제공
+
+// JPQL select m from Member m where m.name = ?
+   @Override
+    Optional<Member> findByName(String name);
+                     findByNameAndId(String name , Long id)
+                     등등등등
+
+
+실무에서는 JPA와 스프링 데이터 JPA를 기본으로 사용하고, 복잡한 동적 쿼리는 Querydsl이라는
+라이브러리를 사용하면 된다. Querydsl을 사용하면 쿼리도 자바 코드로 안전하게 작성할 수 있고, 동적
+쿼리도 편리하게 작성할 수 있다. 이 조합으로 해결하기 어려운 쿼리는 JPA가 제공하는 네이티브 쿼리를
+사용하거나, 앞서 학습한 스프링 JdbcTemplate를 사용하면 된다.
+
+
+2022/ 06/ 07 AOP
+
+AOP가 필요한 상황
+모든 메소드의 호출 시간을 측정하고 싶다면?
+공통 관심 사항(cross-cutting concern) vs 핵심 관심 사항(core concern)
+회원 가입 시간, 회원 조회 시간을 측정하고 싶다면?
+
+
+AOP 적용
+AOP: Aspect Oriented Programming
+공통 관심 사항(cross-cutting concern) vs 핵심 관심 사항(core concern) 분리
+
+
+
+
 
 
 
